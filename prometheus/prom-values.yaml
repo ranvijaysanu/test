@@ -6,8 +6,3 @@ prometheus:
     serviceMonitorSelectorNilUsesHelmValues: false
 
 
-  serviceMonitor:   
-    metricRelabelings:
-    - sourceLabels: [namespace]
-      regex: '(.*)'
-      targetLabel: target_namespace
