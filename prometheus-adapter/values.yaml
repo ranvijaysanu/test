@@ -1,0 +1,5 @@
+prometheus:
+  url: http://prometheus-kube-prometheus-prometheus.ingress-nginx.svc
+  port: 9090
+  path: ""
+

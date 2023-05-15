@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  selector:
+    matchLabels:
+      name: my-app
+  template:
+    metadata:
+      labels:
+        name: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: 360263848174.dkr.ecr.us-east-1.amazonaws.com/my_app:latest
+        ports:
+        - containerPort: 7000
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m

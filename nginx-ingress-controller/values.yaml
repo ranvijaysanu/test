@@ -1,0 +1,27 @@
+controller:
+  metrics:
+    enabled: "true"
+    service:
+      annotations:
+        prometheus.io/port: "10254"
+        prometheus.io/scrape: "true"
+    serviceMonitor: 
+      enabled: "true"
+      additionalLabels:
+        release: "prometheus"
+      namespaceSelector:
+        any: true
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: 10254
+  extraContainers:
+    - name: nginx-exporter
+      image: 'nginx/nginx-prometheus-exporter:0.10.0'
+      args:
+        - '-nginx.scrape-uri=http://localhost/nginx_status'
+      resources:
+        limits:
+          memory: 128Mi
+          cpu: 500m
+      ports:
+        - containerPort: 10254

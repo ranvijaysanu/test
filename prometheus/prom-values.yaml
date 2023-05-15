@@ -1,0 +1,13 @@
+  
+
+prometheus:
+  prometheusSpec:
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+
+  serviceMonitor:   
+    metricRelabelings:
+    - sourceLabels: [namespace]
+      regex: '(.*)'
+      targetLabel: target_namespace
